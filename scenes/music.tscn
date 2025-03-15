@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dqits0fm4klfr"]
+
+[ext_resource type="AudioStream" uid="uid://ebcxxqe51ybh" path="res://assets/music/Undertale - Megalovania.mp3" id="1_18ryy"]
+
+[sub_resource type="GDScript" id="GDScript_o07ks"]
+script/source = "extends AudioStreamPlayer2D
+"
+
+[node name="Music" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_18ryy")
+autoplay = true
+max_distance = 9.22337e+18
+attenuation = 1e+06
+bus = &"Background"
+script = SubResource("GDScript_o07ks")

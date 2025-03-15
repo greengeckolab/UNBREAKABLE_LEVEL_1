@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b3sassv0geis7"
+path="res://.godot/imported/Ah Shit Here We Go Again.mp3-4c29d43d4eefccb7a7adcc57f92008fe.mp3str"
+
+[deps]
+
+source_file="res://assets/music/Ah Shit Here We Go Again.mp3"
+dest_files=["res://.godot/imported/Ah Shit Here We Go Again.mp3-4c29d43d4eefccb7a7adcc57f92008fe.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

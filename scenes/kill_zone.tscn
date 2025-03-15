@@ -1,0 +1,65 @@
+[gd_scene load_steps=7 format=3 uid="uid://c4mx3jncxyeqy"]
+
+[ext_resource type="Script" path="res://scripts/kill_zone.gd" id="1_54gws"]
+[ext_resource type="AudioStream" uid="uid://1cimqlffh6f6" path="res://assets/music/Trash!.mp3" id="2_2eyxn"]
+
+[sub_resource type="Animation" id="Animation_qsls7"]
+resource_name = "GameOver"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GameOver_SFX:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_plcfp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GameOver_SFX:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_ctrdu"]
+resource_name = "game_over"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ped05"]
+_data = {
+"GameOver": SubResource("Animation_qsls7"),
+"RESET": SubResource("Animation_plcfp"),
+"game_over": SubResource("Animation_ctrdu")
+}
+
+[node name="KillZone" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_54gws")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="GameOver_SFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_2eyxn")
+max_distance = 9.22337e+18
+attenuation = 1e+06
+bus = &"SFX"
+
+[node name="GameOver" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ped05")
+}
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
